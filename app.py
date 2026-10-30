@@ -629,8 +629,16 @@ if menu == "Crear Nuevo Presupuesto":
     coste_mano_obra = total_horas_mo * precio_hora
 
     subtotal_neto = subtotal_materiales + coste_mano_obra + coste_boletin
+
+# Casilla para activar o desactivar el IVA opcionalmente
+aplicar_iva = st.checkbox("Incluir IVA (21%)", value=True)
+
+if aplicar_iva:
     iva = subtotal_neto * 0.21
-    total_presupuesto = subtotal_neto + iva
+else:
+    iva = 0.0
+
+total_presupuesto = subtotal_neto + iva
 
     st.subheader("4. Resumen Económico")
     m1, m2, m3, m4 = st.columns(4)
